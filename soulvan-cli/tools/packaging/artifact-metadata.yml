@@ -1,0 +1,29 @@
+name: Soulvan CLI Artifact Metadata
+version: 1.0.0
+description: Metadata for Soulvan CLI artifacts
+author: Your Name
+license: MIT
+dependencies:
+  - unity: ">=2021.1.0"
+  - nvidia: ">=1.0.0"
+  - adobe: ">=1.0.0"
+tags:
+  - cli
+  - unity
+  - rendering
+  - adobe
+  - nvidia
+  - 8k
+  - cinematic
+  - wallet
+ci:
+  build:
+    script: ./ci/scripts/ci-build.sh
+    artifacts:
+      paths:
+        - build/*
+  publish:
+    script: ./ci/scripts/publish-artifacts.sh
+    environment:
+      name: production
+      url: https://your-artifact-store.com

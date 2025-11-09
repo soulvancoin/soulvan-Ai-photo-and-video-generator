@@ -1,0 +1,36 @@
+{
+  "name": "soulvan-cli",
+  "version": "1.0.0",
+  "description": "Command Line Interface for Soulvan project management and rendering.",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "link-wallet": "node dist/src/commands/link-wallet.js",
+    "render": "node dist/src/commands/render.js",
+    "export-adobe": "node dist/src/commands/export-adobe.js",
+    "package": "node dist/src/commands/package.js"
+  },
+  "dependencies": {
+    "commander": "^9.0.0",
+    "typescript": "^4.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^16.0.0",
+    "ts-node": "^10.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/soulvan-cli.git"
+  },
+  "keywords": [
+    "soulvan",
+    "cli",
+    "unity",
+    "rendering",
+    "wallet",
+    "adobe"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}

@@ -1,0 +1,28 @@
+{
+  "presets": [
+    {
+      "name": "Default",
+      "resolution": "1920x1080",
+      "quality": "High",
+      "renderingEngine": "Standard"
+    },
+    {
+      "name": "Cinematic",
+      "resolution": "3840x2160",
+      "quality": "Ultra",
+      "renderingEngine": "HDRP"
+    },
+    {
+      "name": "8K",
+      "resolution": "7680x4320",
+      "quality": "Ultra",
+      "renderingEngine": "NVIDIA RTX"
+    },
+    {
+      "name": "Adobe Export",
+      "resolution": "1920x1080",
+      "quality": "Medium",
+      "renderingEngine": "Standard"
+    }
+  ]
+}

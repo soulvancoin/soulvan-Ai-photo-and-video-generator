@@ -1,0 +1,40 @@
+{
+  "sceneName": "Cinematic Scene",
+  "resolution": "8K",
+  "renderSettings": {
+    "renderer": "NVIDIA",
+    "quality": "High",
+    "frameRate": 60
+  },
+  "walletIntegration": {
+    "enabled": true,
+    "walletType": "Ethereum"
+  },
+  "exportSettings": {
+    "adobeWorkflow": {
+      "enabled": true,
+      "preset": "default"
+    }
+  },
+  "cinematicElements": {
+    "camera": {
+      "fieldOfView": 90,
+      "depthOfField": {
+        "enabled": true,
+        "focusDistance": 10,
+        "aperture": 2.8
+      }
+    },
+    "lighting": {
+      "type": "HDR",
+      "intensity": 1.5
+    },
+    "audio": {
+      "backgroundMusic": "cinematic_theme.mp3",
+      "soundEffects": [
+        "explosion.wav",
+        "footsteps.wav"
+      ]
+    }
+  }
+}

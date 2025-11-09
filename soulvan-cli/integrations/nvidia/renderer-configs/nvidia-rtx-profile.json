@@ -1,0 +1,31 @@
+{
+  "profile": {
+    "name": "NVIDIA RTX Profile",
+    "version": "1.0",
+    "settings": {
+      "resolution": "8K",
+      "renderQuality": "High",
+      "rayTracing": {
+        "enabled": true,
+        "maxBounces": 4,
+        "shadows": {
+          "enabled": true,
+          "softShadows": true
+        }
+      },
+      "antiAliasing": {
+        "enabled": true,
+        "method": "DLSS",
+        "quality": "Ultra"
+      },
+      "postProcessing": {
+        "enabled": true,
+        "effects": [
+          "Bloom",
+          "MotionBlur",
+          "DepthOfField"
+        ]
+      }
+    }
+  }
+}
