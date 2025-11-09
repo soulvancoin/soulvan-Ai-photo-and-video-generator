@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.SoulvanAI" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/soulvan_primary</item>
+        <item name="colorSecondary">@color/soulvan_secondary</item>
+        <item name="android:statusBarColor">@color/soulvan_primary</item>
+    </style>
+</resources>
