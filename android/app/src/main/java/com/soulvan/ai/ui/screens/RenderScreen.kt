@@ -16,6 +16,8 @@ import androidx.compose.ui.unit.dp
 fun RenderScreen(onBack: () -> Unit) {
     var isRendering by remember { mutableStateOf(false) }
     var selectedQuality by remember { mutableStateOf("Ultra") }
+    var selectedResolution by remember { mutableStateOf("8K") }
+    var enableAdaptiveQuality by remember { mutableStateOf(true) }
     
     Scaffold(
         topBar = {
@@ -49,10 +51,29 @@ fun RenderScreen(onBack: () -> Unit) {
             )
             
             Text(
-                text = "Render photorealistic videos with Global Illumination and DLSS 3.5",
+                text = "Render photorealistic videos with 8K resolution, Global Illumination and DLSS 3.5",
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
+            
+            Text(
+                text = "Resolution",
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.SemiBold
+            )
+            
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                listOf("8K", "4K", "2K", "1080p").forEach { resolution ->
+                    FilterChip(
+                        selected = selectedResolution == resolution,
+                        onClick = { selectedResolution = resolution },
+                        label = { Text(resolution) }
+                    )
+                }
+            }
             
             Text(
                 text = "Quality Preset",
@@ -64,7 +85,7 @@ fun RenderScreen(onBack: () -> Unit) {
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                listOf("Fast", "Balanced", "Quality", "Ultra").forEach { quality ->
+                listOf("Ultra", "Cinematic", "Balanced", "Performance").forEach { quality ->
                     FilterChip(
                         selected = selectedQuality == quality,
                         onClick = { selectedQuality = quality },
@@ -73,26 +94,75 @@ fun RenderScreen(onBack: () -> Unit) {
                 }
             }
             
-            Card(
+            Row(
                 modifier = Modifier.fillMaxWidth(),
-                colors = CardDefaults.cardColors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer
-                )
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                Column(
-                    modifier = Modifier.padding(16.dp),
-                    verticalArrangement = Arrangement.spacedBy(8.dp)
-                ) {
+                Column(modifier = Modifier.weight(1f)) {
                     Text(
-                        text = "🎨 Render Features",
-                        style = MaterialTheme.typography.titleMedium,
-                        fontWeight = FontWeight.Bold
+                        text = "Adaptive Quality",
+                        style = MaterialTheme.typography.bodyLarge,
+                        fontWeight = FontWeight.Medium
                     )
-                    FeatureItem("✓ RTX Global Illumination")
-                    FeatureItem("✓ DLSS 3.5 Ray Reconstruction")
-                    FeatureItem("✓ Neural Radiance Cache")
-                    FeatureItem("✓ OptiX AI Denoiser")
-                    FeatureItem("✓ 8K Resolution Support")
+                    Text(
+                        text = "AI-powered real-time optimization",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+                Switch(
+                    checked = enableAdaptiveQuality,
+                    onCheckedChange = { enableAdaptiveQuality = it }
+                )
+            }
+            
+            if (selectedResolution == "8K") {
+                Card(
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = CardDefaults.cardColors(
+                        containerColor = MaterialTheme.colorScheme.primaryContainer
+                    )
+                ) {
+                    Column(
+                        modifier = Modifier.padding(16.dp),
+                        verticalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        Text(
+                            text = "💎 8K Ultra Features",
+                            style = MaterialTheme.typography.titleMedium,
+                            fontWeight = FontWeight.Bold
+                        )
+                        FeatureItem("✓ 7680x4320 Resolution")
+                        FeatureItem("✓ DLSS 3.5 with Frame Generation")
+                        FeatureItem("✓ Ray Reconstruction Technology")
+                        FeatureItem("✓ RTX Global Illumination")
+                        FeatureItem("✓ Neural Radiance Cache 2.0")
+                        FeatureItem("✓ OptiX AI Denoiser Pro")
+                        FeatureItem("✓ Adaptive Quality System")
+                    }
+                }
+            } else {
+                Card(
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = CardDefaults.cardColors(
+                        containerColor = MaterialTheme.colorScheme.primaryContainer
+                    )
+                ) {
+                    Column(
+                        modifier = Modifier.padding(16.dp),
+                        verticalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        Text(
+                            text = "🎨 Render Features",
+                            style = MaterialTheme.typography.titleMedium,
+                            fontWeight = FontWeight.Bold
+                        )
+                        FeatureItem("✓ RTX Global Illumination")
+                        FeatureItem("✓ DLSS 3.5 Ray Reconstruction")
+                        FeatureItem("✓ Neural Radiance Cache")
+                        FeatureItem("✓ OptiX AI Denoiser")
+                    }
                 }
             }
             
@@ -108,10 +178,45 @@ fun RenderScreen(onBack: () -> Unit) {
                         style = MaterialTheme.typography.titleSmall,
                         fontWeight = FontWeight.Bold
                     )
-                    SettingRow("Resolution", "3840x2160 (4K)")
+                    when (selectedResolution) {
+                        "8K" -> {
+                            SettingRow("Resolution", "7680x4320 (33.2MP)")
+                            SettingRow("Ray Samples", when(selectedQuality) {
+                                "Ultra" -> "512 per pixel"
+                                "Cinematic" -> "384 per pixel"
+                                "Balanced" -> "256 per pixel"
+                                else -> "128 per pixel"
+                            })
+                        }
+                        "4K" -> {
+                            SettingRow("Resolution", "3840x2160 (8.3MP)")
+                            SettingRow("Ray Samples", "256 per pixel")
+                        }
+                        "2K" -> {
+                            SettingRow("Resolution", "2560x1440 (3.7MP)")
+                            SettingRow("Ray Samples", "192 per pixel")
+                        }
+                        else -> {
+                            SettingRow("Resolution", "1920x1080 (2.1MP)")
+                            SettingRow("Ray Samples", "128 per pixel")
+                        }
+                    }
                     SettingRow("Frame Rate", "60 FPS")
-                    SettingRow("Ray Samples", "256 per pixel")
-                    SettingRow("DLSS Mode", "Quality")
+                    SettingRow("Ray Depth", when(selectedQuality) {
+                        "Ultra" -> "16 bounces"
+                        "Cinematic" -> "14 bounces"
+                        "Balanced" -> "12 bounces"
+                        else -> "10 bounces"
+                    })
+                    SettingRow("DLSS Mode", when(selectedQuality) {
+                        "Ultra" -> "Quality"
+                        "Cinematic" -> "Balanced"
+                        "Balanced" -> "Balanced"
+                        else -> "Performance"
+                    })
+                    if (enableAdaptiveQuality) {
+                        SettingRow("Adaptive Quality", "✨ Enabled")
+                    }
                 }
             }
             
@@ -130,14 +235,14 @@ fun RenderScreen(onBack: () -> Unit) {
                     Spacer(modifier = Modifier.width(8.dp))
                     Text("Rendering...")
                 } else {
-                    Text("Start Render", style = MaterialTheme.typography.titleMedium)
+                    Text("Start ${selectedResolution} Render", style = MaterialTheme.typography.titleMedium)
                 }
             }
             
             if (isRendering) {
                 LinearProgressIndicator(modifier = Modifier.fillMaxWidth())
                 Text(
-                    text = "RTX rendering in progress... Estimated: 5 minutes",
+                    text = "${selectedResolution} RTX rendering in progress... ${if (enableAdaptiveQuality) "Adaptive quality active" else "Fixed quality"}",
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
