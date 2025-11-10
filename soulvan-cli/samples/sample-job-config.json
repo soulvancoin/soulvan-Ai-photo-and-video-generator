@@ -1,0 +1,8 @@
+{
+  "scene": "Assets/Scenes/cinematic/cinematic_main.unity",
+  "camera": "CineCamera",
+  "output": "Exports/USD/cinematic_main.usd",
+  "format": "USD",
+  "sign": true,
+  "clip_embed": true
+}

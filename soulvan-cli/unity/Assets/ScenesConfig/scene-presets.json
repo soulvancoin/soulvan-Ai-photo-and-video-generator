@@ -1,0 +1,22 @@
+{
+  "scenePresets": [
+    {
+      "name": "Cinematic Scene",
+      "description": "A preset for creating cinematic scenes with advanced rendering settings.",
+      "settings": {
+        "resolution": "8K",
+        "renderPipeline": "NVIDIA",
+        "exportWorkflow": "Adobe"
+      }
+    },
+    {
+      "name": "Staging Scene",
+      "description": "A preset for staging scenes, optimized for quick previews.",
+      "settings": {
+        "resolution": "4K",
+        "renderPipeline": "Standard",
+        "exportWorkflow": "None"
+      }
+    }
+  ]
+}

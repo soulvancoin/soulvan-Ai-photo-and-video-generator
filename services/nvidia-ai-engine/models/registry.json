@@ -1,0 +1,54 @@
+{
+  "models": {
+    "picasso_xl": {
+      "version": "1.0.0",
+      "url": "https://api.nvcf.nvidia.com/v2/nvcf/pexec/functions/0e22db2e-1f49-4d2e-92a6-00e3d3b7c9ab",
+      "description": "NVIDIA Picasso - Photorealistic image generation",
+      "capabilities": ["text-to-image", "style-transfer", "inpainting"],
+      "max_resolution": "2048x2048",
+      "last_updated": null,
+      "hash": null
+    },
+    "edify_3d": {
+      "version": "1.0.0",
+      "url": "https://api.nvcf.nvidia.com/v2/nvcf/pexec/functions/edify-3d-v1",
+      "description": "NVIDIA Edify - 3D model synthesis from text/images",
+      "capabilities": ["text-to-3d", "image-to-3d", "multiview-reconstruction"],
+      "output_formats": ["USD", "OBJ", "FBX"],
+      "last_updated": null
+    },
+    "rtx_renderer": {
+      "version": "545.0",
+      "path": "/opt/nvidia/omniverse/kit",
+      "description": "NVIDIA RTX Real-Time Path Tracer",
+      "features": [
+        "RTX Global Illumination",
+        "DLSS 3.5 Ray Reconstruction",
+        "Neural Radiance Cache",
+        "OptiX AI Denoising",
+        "Real-time Ray Tracing"
+      ],
+      "last_updated": null
+    },
+    "omniverse_usd": {
+      "version": "23.11",
+      "description": "NVIDIA Omniverse USD Composer",
+      "capabilities": ["scene-composition", "physics-simulation", "lighting"],
+      "last_updated": null
+    },
+    "neural_graphics": {
+      "version": "1.2.0",
+      "description": "NVIDIA Neural Graphics Primitives (Instant NeRF)",
+      "capabilities": ["instant-nerf", "neural-sdf", "volumetric-rendering"],
+      "last_updated": null
+    }
+  },
+  "update_policy": {
+    "auto_update": true,
+    "check_interval_hours": 24,
+    "require_approval": false,
+    "rollback_on_failure": true
+  },
+  "last_check": null,
+  "version": "1.0.0"
+}

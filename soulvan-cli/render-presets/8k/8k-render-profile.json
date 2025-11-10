@@ -1,0 +1,31 @@
+{
+  "renderProfile": {
+    "resolution": "7680x4320",
+    "frameRate": 60,
+    "bitDepth": 10,
+    "colorSpace": "Linear",
+    "renderingEngine": "NVIDIA RTX",
+    "settings": {
+      "antiAliasing": "8x",
+      "shadowQuality": "High",
+      "textureQuality": "High",
+      "postProcessing": {
+        "enabled": true,
+        "effects": [
+          "Bloom",
+          "Depth of Field",
+          "Motion Blur"
+        ]
+      },
+      "exportSettings": {
+        "format": "EXR",
+        "compression": "Lossless"
+      }
+    },
+    "metadata": {
+      "createdBy": "Soulvan Team",
+      "createdDate": "2023-10-01",
+      "description": "8K rendering profile optimized for cinematic scenes."
+    }
+  }
+}

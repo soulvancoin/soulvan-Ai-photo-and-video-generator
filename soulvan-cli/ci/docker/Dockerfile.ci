@@ -1,0 +1,19 @@
+FROM node:16
+
+# Set the working directory
+WORKDIR /app
+
+# Copy package.json and package-lock.json
+COPY cli/package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy the rest of the application code
+COPY cli/src ./src
+
+# Copy CI scripts
+COPY ci/scripts ./ci/scripts
+
+# Set the command to run the CI build script
+CMD ["bash", "ci/scripts/ci-build.sh"]

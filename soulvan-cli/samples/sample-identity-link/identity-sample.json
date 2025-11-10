@@ -1,0 +1,12 @@
+{
+  "identity": {
+    "walletAddress": "0x1234567890abcdef1234567890abcdef12345678",
+    "userName": "soulvan_user",
+    "email": "user@example.com",
+    "linkedAt": "2023-10-01T12:00:00Z",
+    "metadata": {
+      "profilePicture": "https://example.com/profile.jpg",
+      "bio": "This is a sample user linked to the Soulvan project."
+    }
+  }
+}
