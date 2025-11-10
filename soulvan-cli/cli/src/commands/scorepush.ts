@@ -165,13 +165,13 @@ function displayScoreBreakdown(result: ScoreResult): void {
 /**
  * Interactive metrics input
  */
-function promptForMetrics(): ScoreMetrics {
+function promptForMetrics(): Promise<ScoreMetrics> {
   const readline = require('readline').createInterface({
     input: process.stdin,
     output: process.stdout
   });
 
-  return new Promise((resolve) => {
+  return new Promise<ScoreMetrics>((resolve) => {
     const metrics: Partial<ScoreMetrics> = {};
     
     readline.question('Airtime (seconds): ', (airtime: string) => {
