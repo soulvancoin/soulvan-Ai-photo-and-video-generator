@@ -1,0 +1,140 @@
+openapi: 3.0.3
+info:
+  title: Soulvan API
+  version: 1.0.0
+  description: >
+    API reference for Soulvan services:
+    Gigapixel Stitcher, SuperRes16K, Motion Synth, ChartGPT, and Contributor KPIs.
+servers:
+  - url: http://localhost
+paths:
+  /api/stitch:
+    post:
+      summary: Gigapixel Stitcher
+      description: Stitch multiple image tiles into a gigapixel panorama.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                image_paths:
+                  type: array
+                  items: { type: string }
+                hdr_merge: { type: boolean }
+                output_exr: { type: boolean }
+      responses:
+        '200':
+          description: Successful stitch
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status: { type: string }
+                  output_path: { type: string }
+
+  /api/superres:
+    post:
+      summary: SuperRes 16K+
+      description: Apply cascaded super‑resolution to images.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                input_path: { type: string }
+                scale: { type: number }
+                filmic_lut: { type: boolean }
+      responses:
+        '200':
+          description: Super‑resolution complete
+
+  /api/generate:
+    post:
+      summary: Motion Synth
+      description: Generate ultra‑real motion sequences from prompts.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                prompt: { type: string }
+                duration_sec: { type: integer }
+                beat_sync_bpm: { type: number }
+      responses:
+        '200':
+          description: Motion video generated
+
+  /api/chart:
+    post:
+      summary: ChartGPT
+      description: Auto‑generate charts and narrative summaries.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                metric: { type: string }
+                window: { type: string }
+      responses:
+        '200':
+          description: Chart generated
+
+  /api/remix:
+    post:
+      summary: Contributor Remix KPI
+      description: Record remix counts per contributor.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                contributor: { type: string }
+                count: { type: integer }
+      responses:
+        '200':
+          description: Remix KPI recorded
+
+  /api/badge:
+    post:
+      summary: Award Badge
+      description: Record a badge earned by a contributor.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                contributor: { type: string }
+                badge: { type: string }
+      responses:
+        '200':
+          description: Badge recorded
+
+  /api/prestige_points:
+    post:
+      summary: Add Prestige Points
+      description: Increment prestige points for a contributor.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                contributor: { type: string }
+                points: { type: number }
+      responses:
+        '200':
+          description: Prestige points updated
